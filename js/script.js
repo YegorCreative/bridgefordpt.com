@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             // Get form data
-            const formData = new FormData(contactForm);
             const name = contactForm.querySelector('input[type="text"]').value;
             const email = contactForm.querySelector('input[type="email"]').value;
             const message = contactForm.querySelector('textarea').value;
@@ -36,19 +35,50 @@ document.addEventListener('DOMContentLoaded', function() {
             // Simple validation
             if (name && email && message) {
                 // Show success message
-                alert('Thank you for your message! We will get back to you soon.');
+                showFormMessage('Thank you for your message! We will get back to you soon.', 'success');
                 
                 // Reset form
                 contactForm.reset();
             } else {
-                alert('Please fill in all fields.');
+                showFormMessage('Please fill in all fields.', 'error');
             }
         });
     }
 
+    // Function to show form messages
+    function showFormMessage(message, type) {
+        const existingMessage = document.querySelector('.form-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `form-message ${type}`;
+        messageDiv.textContent = message;
+        messageDiv.style.cssText = `
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 500;
+            background-color: ${type === 'success' ? '#d4edda' : '#f8d7da'};
+            color: ${type === 'success' ? '#155724' : '#721c24'};
+            border: 1px solid ${type === 'success' ? '#c3e6cb' : '#f5c6cb'};
+        `;
+
+        const contactSection = document.querySelector('.contact .container');
+        contactSection.insertBefore(messageDiv, contactForm);
+
+        // Auto-remove message after 5 seconds
+        setTimeout(() => {
+            messageDiv.style.transition = 'opacity 0.5s ease';
+            messageDiv.style.opacity = '0';
+            setTimeout(() => messageDiv.remove(), 500);
+        }, 5000);
+    }
+
     // Add scroll effect to header
     const header = document.querySelector('header');
-    let lastScroll = 0;
     
     window.addEventListener('scroll', function() {
         const currentScroll = window.pageYOffset;
@@ -59,8 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             header.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
         }
-        
-        lastScroll = currentScroll;
     });
 
     // Add animation to service items on scroll
