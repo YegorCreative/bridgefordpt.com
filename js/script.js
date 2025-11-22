@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
-            const name = contactForm.querySelector('input[type="text"]').value;
-            const email = contactForm.querySelector('input[type="email"]').value;
-            const message = contactForm.querySelector('textarea').value;
+            // Get form data using name attributes
+            const name = contactForm.querySelector('input[name="name"]').value;
+            const email = contactForm.querySelector('input[name="email"]').value;
+            const message = contactForm.querySelector('textarea[name="message"]').value;
             
             // Simple validation
             if (name && email && message) {
@@ -67,14 +67,16 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
 
         const contactSection = document.querySelector('.contact .container');
-        contactSection.insertBefore(messageDiv, contactForm);
+        if (contactSection) {
+            contactSection.insertBefore(messageDiv, contactForm);
 
-        // Auto-remove message after 5 seconds
-        setTimeout(() => {
-            messageDiv.style.transition = 'opacity 0.5s ease';
-            messageDiv.style.opacity = '0';
-            setTimeout(() => messageDiv.remove(), 500);
-        }, 5000);
+            // Auto-remove message after 5 seconds
+            setTimeout(() => {
+                messageDiv.style.transition = 'opacity 0.5s ease';
+                messageDiv.style.opacity = '0';
+                setTimeout(() => messageDiv.remove(), 500);
+            }, 5000);
+        }
     }
 
     // Add scroll effect to header
