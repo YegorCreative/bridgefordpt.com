@@ -27,21 +27,29 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data using name attributes
-            const name = contactForm.querySelector('input[name="name"]').value;
-            const email = contactForm.querySelector('input[name="email"]').value;
-            const message = contactForm.querySelector('textarea[name="message"]').value;
+            // Get form data using name attributes and trim whitespace
+            const name = contactForm.querySelector('input[name="name"]').value.trim();
+            const email = contactForm.querySelector('input[name="email"]').value.trim();
+            const message = contactForm.querySelector('textarea[name="message"]').value.trim();
             
-            // Simple validation
-            if (name && email && message) {
-                // Show success message
-                showFormMessage('Thank you for your message! We will get back to you soon.', 'success');
-                
-                // Reset form
-                contactForm.reset();
-            } else {
+            // Validate all fields are filled
+            if (!name || !email || !message) {
                 showFormMessage('Please fill in all fields.', 'error');
+                return;
             }
+            
+            // Validate email format
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                showFormMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+            
+            // Show success message
+            showFormMessage('Thank you for your message! We will get back to you soon.', 'success');
+            
+            // Reset form
+            contactForm.reset();
         });
     }
 
