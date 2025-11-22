@@ -34,7 +34,7 @@ body {
 #hero {
     background: linear-gradient(135deg, rgba(232, 244, 248, 0.45) 0%, rgba(245, 247, 250, 0.45) 50%, rgba(240, 232, 245, 0.45) 100%), url('../img/physiotherapy-template-design.jpg') center/cover no-repeat;
     color: var(--text-dark);
-    min-height: 100vh;
+    min-height: 80vh; /* reduce height for quicker content access */
     display: flex;
     flex-direction: column;
 }
@@ -46,7 +46,7 @@ nav {
 }
 
 .logo img {
-    height: 150px;
+    height: 300px;
 }
 
 .hero-content {
@@ -258,8 +258,7 @@ nav {
 .service-icon {
     font-size: 3rem;
     margin-bottom: 20px;
-    /* Make emoji icons appear colorless */
-    filter: grayscale(100%);
+    color: var(--secondary-color);
 }
 
 .service-card h3 {
@@ -298,7 +297,7 @@ nav {
     text-align: center;
     max-width: 600px;
     margin: 0 auto 2.5rem;
-    color: #ffffff;
+    color: #083b5e; /* improved contrast over gradient */
     font-size: 0.95rem;
 }
 
@@ -348,9 +347,16 @@ nav {
     margin-bottom: 60px;
 }
 
+.why-choose-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
+}
+
 .benefits-list {
     max-width: 700px;
-    margin: 0 auto;
+    margin: 0;
     list-style: none;
 }
 
@@ -364,15 +370,14 @@ nav {
     color: var(--text-dark);
 }
 
+.why-choose-image img {
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: var(--shadow);
+}
+
 /* Location Section */
 #location {
-     width: 60px;
-     height: 60px;
-     stroke: #000000;
-     stroke-width: 2.5;
-     fill: none;
-     stroke-linecap: round;
-     stroke-linejoin: round;
     padding: 80px 20px;
     background: var(--white);
 }
@@ -468,35 +473,7 @@ nav {
     color: var(--secondary-color);
 }
 
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-family: inherit;
-    transition: border-color 0.3s ease;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-}
-
-.contact-form textarea {
-    resize: vertical;
-}
-
-.contact-form button {
-    width: fit-content;
-}
+/* Removed unused contact form styles (form not present) */
 
 .contact-content-simple {
     max-width: 800px;
@@ -534,15 +511,18 @@ footer {
 
 .footer-content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     margin-bottom: 20px;
     max-width: 1200px;
     margin: 0 auto 20px;
+    gap: 20px;
 }
 
 .footer-logo img {
-    height: 80px;
+    height: 160px;
+    filter: brightness(0) invert(1);
 }
 
 .footer-social {
@@ -568,15 +548,26 @@ footer {
     margin-top: 10px;
 }
 
+.credit a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.credit a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     /* Logo */
     .logo img {
-        height: 100px;
+        height: 200px;
     }
     
     .footer-logo img {
-        height: 60px;
+        height: 120px;
     }
     
     /* Hero Section */
@@ -671,7 +662,7 @@ footer {
     }
     
     /* Testimonials Section */
-    .testimonials-grid {
+    .testimonial-grid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
@@ -685,6 +676,11 @@ footer {
     }
     
     /* Benefits Section */
+    .why-choose-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
     .benefits-list li {
         font-size: 1.1rem;
         padding: 15px;
@@ -766,4 +762,25 @@ footer {
         font-size: 1rem;
         padding: 12px;
     }
+}
+
+/* Accessibility: Skip link styling */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.skip-link:focus {
+    left: 10px;
+    top: 10px;
+    width: auto;
+    height: auto;
+    background: #ffffff;
+    padding: 10px 15px;
+    z-index: 1000;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
 }
