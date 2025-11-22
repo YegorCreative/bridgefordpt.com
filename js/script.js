@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('header');
     
     window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset;
+        const currentScroll = window.scrollY;
         
         // Add shadow when scrolled
         if (currentScroll > 50) {
