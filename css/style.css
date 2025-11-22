@@ -32,7 +32,7 @@ body {
 
 /* Hero Section */
 #hero {
-    background: linear-gradient(135deg, #e8f4f8 0%, #f5f7fa 50%, #f0e8f5 100%);
+    background: linear-gradient(135deg, rgba(232, 244, 248, 0.45) 0%, rgba(245, 247, 250, 0.45) 50%, rgba(240, 232, 245, 0.45) 100%), url('../img/physiotherapy-template-design.jpg') center/cover no-repeat;
     color: var(--text-dark);
     min-height: 100vh;
     display: flex;
@@ -64,7 +64,7 @@ nav {
     font-weight: 700;
     margin-bottom: 20px;
     max-width: 900px;
-    color: var(--primary-color);
+    color: #001f3f;
 }
 
 .subheadline {
@@ -82,10 +82,10 @@ nav {
 }
 
 .booking-note {
-    font-size: 0.95rem;
+    font-size: 1.235rem;
     font-style: italic;
     margin-top: 10px;
-    color: var(--text-light);
+    color: #ffffff;
 }
 
 .btn {
@@ -101,12 +101,12 @@ nav {
 }
 
 .btn-primary {
-    background: var(--accent-color);
-    color: var(--white);
+    background: linear-gradient(135deg, #4a9fd8 0%, #ffffff 100%);
+    color: #001f3f;
 }
 
 .btn-primary:hover {
-    background: #57a85d;
+    background: linear-gradient(135deg, #3a8ec8 0%, #f0f0f0 100%);
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
@@ -122,12 +122,12 @@ nav {
 }
 
 .btn-accent {
-    background: var(--secondary-color);
-    color: var(--white);
+    background: linear-gradient(135deg, #006994 0%, #40e0d0 50%, #ffffff 100%);
+    color: #001f3f;
 }
 
 .btn-accent:hover {
-    background: #3a8ec8;
+    background: linear-gradient(135deg, #005580 0%, #30d0c0 50%, #f0f0f0 100%);
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
@@ -145,10 +145,41 @@ nav {
     align-items: center;
 }
 
+.about-image {
+    padding: 10px; /* spacing between image and border */
+    border: 3px solid #ffffff; /* actual visible white border */
+    background: transparent; /* remove fill so border is distinct */
+    border-radius: 25px; /* match image radius */
+    box-shadow: var(--shadow);
+}
+
 .about-image img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 25px;
     box-shadow: var(--shadow);
+}
+
+/* Wrapper with inner border effect */
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.image-wrapper img {
+    display: block;
+    border-radius: 25px; /* match existing radius */
+}
+
+.image-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    border: 3px solid #ffffff;
+    border-radius: 21px; /* slightly smaller to sit inside */
+    pointer-events: none;
 }
 
 .about-text h2 {
@@ -240,42 +271,62 @@ nav {
 }
 
 /* Testimonials Section */
-#testimonials {
-    padding: 80px 20px;
-    background: var(--white);
+.testimonials {
+    padding: 4rem 1.5rem;
+    background: #f7faf9;
 }
 
-#testimonials h2 {
+.testimonials .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-title {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: var(--primary-color);
-    margin-bottom: 60px;
+    margin-bottom: 0.5rem;
 }
 
-.testimonials-grid {
+.section-subtitle {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    color: #51606a;
+    font-size: 0.95rem;
+}
+
+.testimonial-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.75rem;
 }
 
-.testimonial {
-    background: var(--bg-light);
-    padding: 30px;
-    border-radius: 10px;
-    border-left: 4px solid var(--accent-color);
+.testimonial-card {
+    background: #ffffff;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e1ece8;
 }
 
-.quote {
-    font-size: 1.2rem;
-    font-style: italic;
-    color: var(--text-dark);
-    margin-bottom: 15px;
-    line-height: 1.8;
+.testimonial-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #314047;
+    margin-bottom: 1rem;
 }
 
-.author {
-    color: var(--text-light);
+.testimonial-name {
     font-weight: 600;
+    color: #1b7f82;
+    margin-bottom: 0.25rem;
+}
+
+.testimonial-rating {
+    font-size: 1.2rem;
+    color: #ffc107;
+    letter-spacing: 2px;
 }
 
 /* Why Choose Section */
@@ -506,29 +557,46 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Logo */
+    .logo img {
+        height: 100px;
+    }
+    
+    .footer-logo img {
+        height: 60px;
+    }
+    
+    /* Hero Section */
+    #hero {
+        min-height: auto;
+        padding-bottom: 40px;
+    }
+    
+    .hero-content {
+        padding: 40px 20px;
+    }
+    
     .hero-content h1 {
         font-size: 2rem;
+        margin-bottom: 15px;
     }
     
     .subheadline {
         font-size: 1.2rem;
-    }
-    
-    .about-content,
-    .location-content,
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        margin-bottom: 30px;
     }
     
     .cta-buttons {
         flex-direction: column;
         width: 100%;
+        gap: 15px;
     }
     
     .btn {
         width: 100%;
         max-width: 300px;
+        padding: 12px 30px;
+        font-size: 1rem;
     }
     
     .booking-note {
@@ -536,8 +604,152 @@ footer {
         padding: 0 20px;
     }
     
+    /* Sections */
+    #about,
+    #services,
+    #testimonials,
+    #why-choose,
+    #location,
+    #contact {
+        padding: 50px 20px;
+    }
+    
+    /* About Section */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .about-text h2,
+    #services h2,
+    #testimonials h2,
+    #why-choose h2,
+    #location h2,
+    #contact h2 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    
+    .about-text h3 {
+        font-size: 1.3rem;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+    }
+    
+    .credentials li {
+        font-size: 0.95rem;
+    }
+    
+    /* Services Section */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .service-card {
+        padding: 30px 20px;
+    }
+    
+    .service-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    /* Testimonials Section */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .testimonial {
+        padding: 25px;
+    }
+    
+    .quote {
+        font-size: 1.1rem;
+    }
+    
+    /* Benefits Section */
+    .benefits-list li {
+        font-size: 1.1rem;
+        padding: 15px;
+    }
+    
+    /* Location Section */
+    .location-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .location-info p {
+        font-size: 1rem;
+    }
+    
+    .location-map iframe {
+        width: 100%;
+        height: 300px;
+    }
+    
+    /* Contact Section */
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .contact-info p,
+    .contact-info-center p {
+        font-size: 1.1rem;
+    }
+    
+    .contact-link {
+        font-size: 1.1rem;
+    }
+    
+    .contact-methods-center .contact-link {
+        font-size: 1.2rem;
+    }
+    
+    /* Footer */
     .footer-content {
         flex-direction: column;
         gap: 20px;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .logo img {
+        height: 80px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.7rem;
+    }
+    
+    .subheadline {
+        font-size: 1.1rem;
+    }
+    
+    .about-text h2,
+    #services h2,
+    #testimonials h2,
+    #why-choose h2,
+    #location h2,
+    #contact h2 {
+        font-size: 1.7rem;
+    }
+    
+    .service-icon {
+        font-size: 2.5rem;
+    }
+    
+    .benefits-list li {
+        font-size: 1rem;
+        padding: 12px;
     }
 }
