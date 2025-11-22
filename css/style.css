@@ -37,6 +37,8 @@ body {
     min-height: 80vh; /* reduce height for quicker content access */
     display: flex;
     flex-direction: column;
+    margin: 15px;
+    border-radius: 15px;
 }
 
 nav {
@@ -503,10 +505,12 @@ nav {
 
 /* Footer */
 footer {
-    background: var(--primary-color);
+    background: linear-gradient(135deg, #2c5f8d 0%, #4a9fd8 50%, #8b7fbe 100%);
     color: var(--white);
     padding: 40px 20px 20px;
     text-align: center;
+    margin: 15px;
+    border-radius: 25px;
 }
 
 .footer-content {
@@ -783,4 +787,34 @@ footer {
     z-index: 1000;
     border-radius: 5px;
     box-shadow: var(--shadow);
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
 }

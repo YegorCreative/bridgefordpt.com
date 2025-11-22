@@ -72,16 +72,24 @@ document.querySelectorAll('section').forEach(section => {
 // Header scroll effect (optional)
 let lastScroll = 0;
 window.addEventListener('scroll', function() {
-    const nav = document.querySelector('nav');
     const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        nav.style.background = 'rgba(44, 95, 141, 0.95)';
-        nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-    } else {
-        nav.style.background = 'transparent';
-        nav.style.boxShadow = 'none';
-    }
-    
     lastScroll = currentScroll;
+});
+
+// Scroll to Top Button
+const scrollToTopBtn = document.getElementById('scrollToTop');
+
+window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('visible');
+    } else {
+        scrollToTopBtn.classList.remove('visible');
+    }
+});
+
+scrollToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 });
