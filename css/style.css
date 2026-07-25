@@ -22,6 +22,12 @@ body {
     color: var(--text-dark);
     scroll-behavior: smooth;
     background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);
+    overflow-wrap: break-word;
+}
+
+img,
+iframe {
+    max-width: 100%;
 }
 
 .container {
@@ -313,7 +319,7 @@ nav {
 
 .testimonial-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
     gap: 1.75rem;
 }
 
@@ -427,6 +433,7 @@ nav {
     font-size: 2rem;
     color: var(--secondary-color);
     margin-top: 2px;
+    flex-shrink: 0;
 }
 
 .location-item div {
@@ -503,9 +510,13 @@ nav {
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: 600;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
     margin: 10px 0;
     transition: color 0.3s ease;
+    overflow-wrap: anywhere;
 }
 
 .contact-link:hover {
@@ -538,6 +549,10 @@ nav {
 
 .contact-methods-center .contact-link {
     font-size: 1.4rem;
+}
+
+.contact-cta-buttons {
+    margin-top: 40px;
 }
 
 /* Footer */
@@ -576,6 +591,11 @@ footer {
     text-decoration: none;
     font-size: 1.5rem;
     transition: opacity 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
 }
 
 .footer-social a:hover {
@@ -602,6 +622,13 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    #about > .container,
+    #services > .container,
+    #why-choose > .container,
+    #location > .container,
+    #contact > .container {
+        padding-inline: 0;
+    }
 
     /* Logo */
     .logo img {
@@ -641,7 +668,8 @@ footer {
 
     .btn {
         width: 100%;
-        max-width: 300px;
+        max-width: 420px;
+        min-height: 48px;
         padding: 12px 30px;
         font-size: 1rem;
     }
@@ -706,7 +734,7 @@ footer {
     /* Testimonials Section */
     .testimonial-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 20px;
     }
 
     .testimonial {
@@ -775,6 +803,8 @@ footer {
 
     .contact-methods-center .contact-link {
         font-size: 1.2rem;
+        width: 100%;
+        padding: 8px 4px;
     }
 
     /* Footer */
@@ -790,12 +820,27 @@ footer {
         padding: 0 15px;
     }
 
+    #hero {
+        margin: 8px;
+        border-radius: 12px;
+        padding-bottom: 24px;
+    }
+
+    nav {
+        padding: 14px 0;
+    }
+
     .logo img {
         height: 80px;
     }
 
+    .hero-content {
+        padding: 24px 14px;
+    }
+
     .hero-content h1 {
-        font-size: 1.7rem;
+        font-size: clamp(1.65rem, 8vw, 2rem);
+        line-height: 1.2;
     }
 
     .subheadline {
@@ -819,6 +864,37 @@ footer {
         font-size: 1rem;
         padding: 12px;
     }
+
+    #testimonials {
+        padding-inline: 16px;
+    }
+
+    .testimonials .container {
+        padding: 24px 16px;
+    }
+
+    .testimonial-card {
+        padding: 20px 16px;
+    }
+
+    .location-item {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .contact-cta-buttons {
+        margin-top: 24px;
+    }
+
+    footer {
+        margin: 8px;
+        padding-inline: 12px;
+    }
+
+    .footer-logo img {
+        height: 96px;
+    }
+
 }
 
 /* Accessibility: Skip link styling */
@@ -871,4 +947,37 @@ footer {
 .scroll-to-top.visible {
     opacity: 1;
     visibility: visible;
+}
+
+@media (hover: none) {
+    .btn:hover,
+    .service-card:hover,
+    .location-item:hover,
+    .scroll-to-top:hover {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-to-top {
+        right: max(16px, env(safe-area-inset-right));
+        bottom: max(16px, env(safe-area-inset-bottom));
+        width: 48px;
+        height: 48px;
+    }
 }
