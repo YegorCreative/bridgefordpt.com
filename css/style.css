@@ -469,6 +469,35 @@ nav {
 }
 
 /* Contact Section */
+/* Payment Options / CareCredit */
+#payment-options {
+    padding: 80px 20px;
+    background: var(--white);
+}
+
+#payment-options h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.payment-intro {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    max-width: 640px;
+    margin: 0 auto 40px;
+}
+
+.care-credit-widget {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 120px;
+}
+
 #contact {
     padding: 80px 20px;
     background: var(--bg-light);
@@ -626,6 +655,7 @@ footer {
     #services > .container,
     #why-choose > .container,
     #location > .container,
+    #payment-options > .container,
     #contact > .container {
         padding-inline: 0;
     }
@@ -685,6 +715,7 @@ footer {
     #testimonials,
     #why-choose,
     #location,
+    #payment-options,
     #contact {
         padding: 50px 20px;
     }
@@ -700,6 +731,7 @@ footer {
     #testimonials h2,
     #why-choose h2,
     #location h2,
+    #payment-options h2,
     #contact h2 {
         font-size: 2rem;
         margin-bottom: 40px;
@@ -852,6 +884,7 @@ footer {
     #testimonials h2,
     #why-choose h2,
     #location h2,
+    #payment-options h2,
     #contact h2 {
         font-size: 1.7rem;
     }

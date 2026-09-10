@@ -327,6 +327,30 @@
       </div>
     </section>
 
+    <!-- Payment Options / CareCredit -->
+    <section id="payment-options">
+      <div class="container">
+        <h2>Payment Options</h2>
+        <p class="payment-intro">We accept CareCredit to help make your care more affordable. Apply or check your options below.</p>
+        <div id="care-credit-widget" class="care-credit-widget">
+          <script>
+            var syfWidgetObject = {};
+            syfWidgetObject.flowType = 'GENERIC';
+            syfWidgetObject.subFlowType = 'CARECREDIT';
+            syfWidgetObject.syfMerchantId = '5348120287764260';
+            window.addEventListener('DOMContentLoaded', async () => await _syfSpyInit());
+            const _syfSpyInit = async () => {
+              var scriptElement = document.createElement('script');
+              scriptElement.type = 'text/javascript';
+              scriptElement.src = 'https://pdpone.syfpos.com/mpp/UniFi.js';
+              scriptElement.id = 'syfMPPScript';
+              document.head.insertAdjacentElement('afterBegin', scriptElement);
+            }
+          </script>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact / Appointment Section -->
     <section id="contact">
       <div class="container">
