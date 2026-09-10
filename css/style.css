@@ -473,6 +473,7 @@ nav {
 #payment-options {
     padding: 80px 20px;
     background: var(--white);
+    overflow-x: hidden;
 }
 
 #payment-options h2 {
@@ -486,8 +487,10 @@ nav {
     text-align: center;
     color: var(--text-light);
     font-size: 1.1rem;
+    line-height: 1.5;
     max-width: 640px;
     margin: 0 auto 40px;
+    padding: 0 8px;
 }
 
 .care-credit-widget {
@@ -495,7 +498,26 @@ nav {
     justify-content: center;
     align-items: flex-start;
     width: 100%;
+    max-width: 100%;
     min-height: 120px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Keep third-party CareCredit embeds from blowing out mobile layout */
+.care-credit-widget iframe,
+.care-credit-widget img,
+.care-credit-widget object,
+.care-credit-widget embed,
+.care-credit-widget video {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto;
+}
+
+.care-credit-widget > *:not(script) {
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 #contact {
@@ -737,6 +759,20 @@ footer {
         margin-bottom: 40px;
     }
 
+    #payment-options h2 {
+        margin-bottom: 16px;
+    }
+
+    .payment-intro {
+        font-size: 1rem;
+        margin-bottom: 28px;
+        padding: 0 4px;
+    }
+
+    .care-credit-widget {
+        min-height: 100px;
+    }
+
     .about-text h3 {
         font-size: 1.3rem;
     }
@@ -887,6 +923,11 @@ footer {
     #payment-options h2,
     #contact h2 {
         font-size: 1.7rem;
+    }
+
+    .payment-intro {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
     }
 
     .service-icon {
